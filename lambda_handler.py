@@ -40,8 +40,9 @@ def lambda_handler(event, context): #pylint: disable=W0613
 
         sforce.Case.create({
             # These two fields are custom fields that need to be added to the Case object
-            'Slack_User__c' : feedback['user_id'],
-            'Slack_Team__c' : feedback['team_id'],
+            # Once you create these fields, uncomment the lines to include them in your mapping
+            # 'Slack_User__c' : feedback['user_id'],
+            # 'Slack_Team__c' : feedback['team_id'],
             'Subject' : feedback['text'][:250] + ('...' if len(feedback['text']) > 250 else ''),
             'Description' : feedback['text'] if len(feedback['text']) > 250 else '',
             'Origin' : 'Feedback',
